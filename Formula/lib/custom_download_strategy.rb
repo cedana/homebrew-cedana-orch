@@ -56,7 +56,7 @@ end
 # `:using => GitHubPrivateRepositoryReleaseDownloadStrategy` to the URL section of
 # your formula. This download strategy uses GitHub access tokens (in the
 # environment variables HOMEBREW_GITHUB_API_TOKEN) to sign the request.
-class GitHubPrivateRepositoryReleaseDownloadStrategy < PrivateRepoDownloadStrategy 
+class PrivateRepoReleaseDownloadStrategy < PrivateRepoDownloadStrategy 
   def initialize(url, name, version, **meta)
     super
   end
