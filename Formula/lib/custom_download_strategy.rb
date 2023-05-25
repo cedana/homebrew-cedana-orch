@@ -125,6 +125,10 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
     curl_download download_url, "--header", "Accept: application/octet-stream", "--header", "Authorization: token #{@github_token}", to: temporary_path
   end
 
+  def resolve_url_basename_time_file_size(url, timeout: nil)
+    [download_url, "", Time.now, 0, false]
+  end
+
   def asset_id
     @asset_id ||= resolve_asset_id
   end
