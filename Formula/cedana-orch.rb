@@ -6,20 +6,20 @@ require_relative "lib/custom_download_strategy"
 class CedanaOrch < Formula
   desc ""
   homepage "cedana.ai"
-  version "0.6.11"
+  version "0.6.12"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.6.11/cedana-orch_0.6.11_darwin_amd64.tar.gz", using: PrivateRepoReleaseDownloadStrategy
-      sha256 "15a4a359c3b38113569c6924704d02f82974f8d7d3dad638605bc8018de96748"
+    if Hardware::CPU.arm?
+      url "https://github.com/cedana/cedana-orch/releases/download/v0.6.12/cedana-orch_0.6.12_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "0cd17431f635366d01152e11f6a5e1c9e2c61e250b3e7ee4fa3b9659e2f9820e"
 
       def install
         bin.install "cedana-orch"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.6.11/cedana-orch_0.6.11_darwin_arm64.tar.gz", using: PrivateRepoReleaseDownloadStrategy
-      sha256 "915ba5311eaa52cf7868af4d0884d9ad448f77397954024185d41ab27efaebc1"
+    if Hardware::CPU.intel?
+      url "https://github.com/cedana/cedana-orch/releases/download/v0.6.12/cedana-orch_0.6.12_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "4e1fe8edd2b31516756c0049a3d23773aa004615ec071519e0d05d0ccd7bfcaf"
 
       def install
         bin.install "cedana-orch"
@@ -28,17 +28,17 @@ class CedanaOrch < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.6.11/cedana-orch_0.6.11_linux_amd64.tar.gz", using: PrivateRepoReleaseDownloadStrategy
-      sha256 "0dd2576859b2025d92ce918c6e7abaebae7d36308f55304e899f10917aab5f23"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/cedana/cedana-orch/releases/download/v0.6.12/cedana-orch_0.6.12_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "67a2ec30431bfbb1db4324cadd8ff10a17598e225159fbbf33fcd30874c59bd0"
 
       def install
         bin.install "cedana-orch"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.6.11/cedana-orch_0.6.11_linux_arm64.tar.gz", using: PrivateRepoReleaseDownloadStrategy
-      sha256 "160129ad8678a4ad61bded8776ee4a2e48e1b51f69e853b436feb33c0d8ae9c1"
+    if Hardware::CPU.intel?
+      url "https://github.com/cedana/cedana-orch/releases/download/v0.6.12/cedana-orch_0.6.12_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "fa3457f02f1d0363dd6dc2b91a76d870d0bf96dec1cff67859fe34bc734270aa"
 
       def install
         bin.install "cedana-orch"
