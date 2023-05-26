@@ -6,39 +6,31 @@ require_relative "lib/custom_download_strategy"
 class CedanaOrch < Formula
   desc ""
   homepage "cedana.ai"
-  version "0.7.1"
+  version "0.7.6"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.7.1/cedana-orch_0.7.1_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "90a4a5d0375fcef1d826ff25aefa6c39346d94bf24e190836b9948e663aa25c3"
+    url "https://github.com/cedana/cedana-orch/releases/download/v0.7.6/cedana-orch_0.7.6_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "8c40cb27cb1c794b2b1049f6af7992249d29344ee77802ab9fb30a662f38b1d6"
 
-      def install
-        bin.install "cedana-orch"
-      end
+    def install
+      bin.install "cedana-orch"
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.7.1/cedana-orch_0.7.1_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8d84ba95ed66177927cc6032c76ebad22f14e3cd1d0ededec23ad0de995209ed"
 
-      def install
-        bin.install "cedana-orch"
+    if Hardware::CPU.arm?
+      def caveats
+        <<~EOS
+          The darwin_arm64 architecture is not supported for the CedanaOrch
+          formula at this time. The darwin_amd64 binary may work in compatibility
+          mode, but it might not be fully supported.
+        EOS
       end
     end
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.7.1/cedana-orch_0.7.1_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "fe6a665327972acadb73c7929b46639521bb79a9a7508083b5e0d55fa05fb716"
-
-      def install
-        bin.install "cedana-orch"
-      end
-    end
     if Hardware::CPU.intel?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.7.1/cedana-orch_0.7.1_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "99de249840d79bd6065d2636d78c5549e1a93bf9c6b541eb5a66356d1acc1151"
+      url "https://github.com/cedana/cedana-orch/releases/download/v0.7.6/cedana-orch_0.7.6_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "557cca8b944258945f0f998401dcac0e5019e61fcfb5d66698b1e1aa48539e9e"
 
       def install
         bin.install "cedana-orch"
