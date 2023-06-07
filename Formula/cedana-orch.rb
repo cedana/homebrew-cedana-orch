@@ -6,11 +6,11 @@ require_relative "lib/custom_download_strategy"
 class CedanaOrch < Formula
   desc ""
   homepage "cedana.ai"
-  version "0.8.8"
+  version "0.8.9"
 
   on_macos do
-    url "https://github.com/cedana/cedana-orch/releases/download/v0.8.8/cedana-orch_0.8.8_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "615ec53ac0dd93bc1676272675f13a7ab390a66e33aed0ddf3fb259e425b6269"
+    url "https://github.com/cedana/cedana-orch/releases/download/v0.8.9/cedana-orch_0.8.9_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "33b28590e979ff8a848da28157fe8e5b91a7d1f1fa45a169ae7326c9b33baec2"
 
     def install
       bin.install "cedana-orch"
@@ -29,8 +29,8 @@ class CedanaOrch < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/cedana/cedana-orch/releases/download/v0.8.8/cedana-orch_0.8.8_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ccc8ea2c008490cc4f6166e07c7bb704862c4f28ebe7f4976295d89c4a555450"
+      url "https://github.com/cedana/cedana-orch/releases/download/v0.8.9/cedana-orch_0.8.9_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "d9e1626540dd144f5dc7760f43c68805060d0b02e82362c2f58bdb34212d2f60"
 
       def install
         bin.install "cedana-orch"
